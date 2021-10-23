@@ -19,14 +19,13 @@ while room_count < 5:
     elif floor_type == 'tile':
         price_per_unit = 4.99
     else:
-        print ("invalid floor type price will be set to 0")
+        print ("invalid floor type price will be set to 0 for that room")
         price_per_unit = 0
 
 
     def area(length,width):
         return float(length * width * price_per_unit)
     price = area(length,width)
-    print (round(price,2))
 
     room_count += 1
     print ("the price for room ", room_count," is %.2f " %price )
