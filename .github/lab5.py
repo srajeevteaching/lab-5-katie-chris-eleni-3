@@ -10,29 +10,36 @@
 # condtionals: outside if statement for room # and cost calculation on the inside.
 # NOTE: conditionals are the same for all rooms.
 
-room_count = 0
+def getFloorLength():
+    return float(input("  Floor length (L): "))
+
+def getFloorWidth():
+    return float(input("  Floor width  (W): "))
+
+def getFloorType():
+    return input("  Floor type   (T): ").strip().lower()
+
+def computeArea(length, width):
+    return float(length * width * price_per_unit)
+
 total_cost = float(0)
+
+room_count = 0
 while room_count < 5:
-    length = input("  Floor length (L): ")
-    length = float(length)
-    width = input("  Floor width  (W): ")
-    width = float(width)
-    floor_type = input("  Floor type   (T): ")
-    floor_type = floor_type.strip().lower()
-    if floor_type == 'hardwood':
+    length = getFloorLength()
+    width = getFloorWidth()
+    type = getFloorType()
+    if type == 'hardwood':
         price_per_unit = 1.39
-    elif floor_type == 'carpet':
+    elif type == 'carpet':
         price_per_unit = 3.99
-    elif floor_type == 'tile':
+    elif type == 'tile':
         price_per_unit = 4.99
     else:
         print("invalid floor type (price will be set to $0.00)")
         price_per_unit = 0
 
-    def area(length, width):
-        return float(length * width * price_per_unit)
-
-    price = area(length, width)
+    price = computeArea(length, width)
     print (round(price, 2))
 
     room_count += 1
